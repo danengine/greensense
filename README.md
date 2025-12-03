@@ -70,12 +70,13 @@
 FA2/
 ├── index.html          # Main HTML file
 ├── style.css           # Stylesheet
-├── logo.png            # Logo image
-├── hero.png            # Hero section image
-├── social.png          # Dashboard preview image
-├── people.png          # Benefits section image
 ├── favicon.png         # Site favicon
-└── README.md           # This file
+├── README.md           # Project documentation
+└── img/                # Images directory
+    ├── logo.png        # Logo image
+    ├── hero.png        # Hero section image
+    ├── social.png      # Dashboard preview image
+    └── people.png      # Benefits section image
 ```
 
 ---
