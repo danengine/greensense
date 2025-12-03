@@ -1507,10 +1507,21 @@ a:hover {
     .hero-cta-buttons {
         flex-direction: column;
         width: 100%;
+        justify-content: center;
+        align-items: center;
     }
     
     .hero-cta-buttons .cta-button {
         width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .hero-cta-buttons .cta-button.secondary {
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
     
     .hero-content {
