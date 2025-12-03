@@ -1,7 +1,4 @@
-# GreenSense - Smart Farming Made Simple
-## Case Study: Responsive Landing Page Development
-
----
+# GreenSense - Smart Insights for Small Greenhouse Farmers
 
 ## 📋 Project Overview
 
@@ -25,10 +22,6 @@
 - **Weights**: 300, 400, 500, 600, 700, 800
 - **Base Size**: 16px
 - **Scale**: Responsive font sizing across breakpoints
-
-### Spacing System
-- Uses CSS custom properties (variables) for consistent spacing
-- Breakpoints: 480px, 768px, 968px
 
 ---
 
