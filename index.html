@@ -42,16 +42,18 @@
                     <h1 class="hero-headline">
                         Get back to growth
                         <br>
-                        with 
-                        <span class="highlight-circle">
-                            <span class="circle-text">the world's #1</span>
+                        <span class="with-phrase">
+                            with 
+                            <span class="highlight-circle">
+                                <span class="circle-text">the world's #1</span>
+                            </span>
                         </span>
                         Farm Management
                     </h1>
                     <p class="hero-description">GreenSense is helping small-scale farmers safeguard their operations and increase profitability.</p>
                     <div class="hero-cta-buttons">
                         <a href="#signup" class="cta-button primary">Start My Free Trial</a>
-                        <a href="#video" class="cta-button secondary">
+                        <a href="#" class="cta-button secondary" id="watch-video-btn">
                             <i class="fas fa-play"></i>
                             Watch Video
                         </a>
@@ -286,6 +288,29 @@
             </div>
         </div>
     </footer>
+
+    <!-- Video Modal -->
+    <div id="video-modal" class="video-modal">
+        <div class="video-modal-overlay"></div>
+        <div class="video-modal-content">
+            <button class="video-modal-close" aria-label="Close video">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="video-wrapper">
+                <iframe 
+                    width="560" 
+                    height="315" 
+                    src="https://www.youtube.com/embed/FRTvF-OR4M4?si=awmitpBhYSpMLOzn" 
+                    title="YouTube video player" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    referrerpolicy="no-referrer-when-downgrade" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+    </div>
+
     <script>
         // Mobile menu toggle
         const navbarToggle = document.querySelector('.navbar-toggle');
@@ -338,6 +363,40 @@
             fadeElements.forEach(element => {
                 observer.observe(element);
             });
+        });
+
+        // Video Modal functionality
+        const watchVideoBtn = document.getElementById('watch-video-btn');
+        const videoModal = document.getElementById('video-modal');
+        const videoModalClose = document.querySelector('.video-modal-close');
+        const videoModalOverlay = document.querySelector('.video-modal-overlay');
+
+        if (watchVideoBtn) {
+            watchVideoBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                videoModal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        }
+
+        function closeVideoModal() {
+            videoModal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        if (videoModalClose) {
+            videoModalClose.addEventListener('click', closeVideoModal);
+        }
+
+        if (videoModalOverlay) {
+            videoModalOverlay.addEventListener('click', closeVideoModal);
+        }
+
+        // Close modal on Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && videoModal.classList.contains('active')) {
+                closeVideoModal();
+            }
         });
     </script>
 </body>

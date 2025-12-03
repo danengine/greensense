@@ -265,7 +265,8 @@ a:hover {
     position: relative;
     z-index: 1;
     padding-top: var(--spacing-sm);
-    padding-bottom: var(--spacing-xs);
+    padding-bottom: 0;
+    margin-bottom: -2px;
     overflow: visible;
 }
 
@@ -285,12 +286,17 @@ a:hover {
 }
 
 .hero-headline {
-    font-size: 56px;
+    font-size: 50px;
     font-weight: 800;
     color: var(--background-white);
     margin-bottom: var(--spacing-md);
     line-height: 1.1;
     letter-spacing: -2px;
+}
+
+.with-phrase {
+    white-space: nowrap;
+    display: inline-block;
 }
 
 .highlight-circle {
@@ -302,9 +308,9 @@ a:hover {
 .circle-text {
     background: linear-gradient(135deg, #ff8c42 0%, #ff6b1a 100%);
     color: var(--background-white);
-    padding: 10px 24px;
+    padding: 4px 12px;
     border-radius: 35px;
-    font-size: 28px;
+    font-size: 50px;
     font-weight: 800;
     white-space: nowrap;
     display: inline-block;
@@ -313,6 +319,7 @@ a:hover {
     box-shadow: 0 4px 15px rgba(255, 140, 66, 0.3);
     line-height: 1.2;
     vertical-align: middle;
+    letter-spacing: -2px;
 }
 
 .hero-description {
@@ -1137,6 +1144,31 @@ a:hover {
    Responsive Design - Media Queries
    ======================================== */
 
+/* iPad Air specific - hide hero image when it goes below CTA buttons */
+@media (min-width: 820px) and (max-width: 1024px) {
+    .hero-visual {
+        display: none;
+    }
+    
+    .hero-image-wrapper {
+        display: none;
+    }
+    
+    .hero-image {
+        display: none;
+    }
+    
+    .hero .container {
+        padding-top: var(--spacing-lg);
+        padding-bottom: var(--spacing-lg);
+        margin-bottom: 0;
+    }
+    
+    .hero {
+        padding-bottom: var(--spacing-md);
+    }
+}
+
 /* Tablet devices */
 @media (max-width: 968px) {
     :root {
@@ -1158,13 +1190,14 @@ a:hover {
     }
     
     .hero-headline {
-        font-size: 56px;
+        font-size: 50px;
         letter-spacing: -2px;
     }
     
     .circle-text {
-        font-size: 20px;
-        padding: 8px 18px;
+        font-size: 50px;
+        padding: 4px 10px;
+        letter-spacing: -2px;
     }
     
     .hero-image {
@@ -1456,14 +1489,15 @@ a:hover {
     }
     
     .hero-headline {
-        font-size: 44px;
+        font-size: 38px;
         letter-spacing: -1px;
     }
     
     .circle-text {
-        font-size: 20px;
-        padding: 6px 14px;
+        font-size: 38px;
+        padding: 3px 8px;
         border-width: 3px;
+        letter-spacing: -1px;
     }
     
     .hero-description {
@@ -1800,11 +1834,13 @@ a:hover {
     }
     
     .hero-headline {
-        font-size: 40px;
+        font-size: 34px;
     }
     
     .circle-text {
-        font-size: 18px;
+        font-size: 34px;
+        padding: 3px 8px;
+        letter-spacing: -1px;
     }
     
     .hero-cta-form {
@@ -2031,6 +2067,138 @@ a:hover {
     .cta-button {
         padding: 14px 20px;
         font-size: 14px;
+    }
+}
+
+/* ========================================
+   Video Modal
+   ======================================== */
+.video-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.video-modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.video-modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    cursor: pointer;
+}
+
+.video-modal-content {
+    position: relative;
+    width: 95%;
+    max-width: 1400px;
+    height: 85vh;
+    max-height: 800px;
+    z-index: 10001;
+    background-color: #000;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+}
+
+.video-modal.active .video-modal-content {
+    transform: scale(1);
+}
+
+.video-modal-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border: none;
+    border-radius: 50%;
+    color: var(--background-white);
+    font-size: 20px;
+    cursor: pointer;
+    z-index: 10002;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.video-modal-close:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    transform: rotate(90deg);
+}
+
+.video-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding-bottom: 0;
+}
+
+.video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* Responsive Video Modal */
+@media (max-width: 968px) {
+    .video-modal-content {
+        width: 98%;
+        height: 80vh;
+        max-height: 600px;
+    }
+}
+
+@media (max-width: 768px) {
+    .video-modal-content {
+        width: 100%;
+        height: 75vh;
+        max-height: 500px;
+        border-radius: 0;
+    }
+    
+    .video-modal-close {
+        top: 10px;
+        right: 10px;
+        width: 35px;
+        height: 35px;
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    .video-modal-content {
+        height: 70vh;
+        max-height: 400px;
+    }
+    
+    .video-modal-close {
+        width: 30px;
+        height: 30px;
+        font-size: 16px;
     }
 }
 
