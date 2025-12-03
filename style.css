@@ -591,31 +591,37 @@ a:hover {
 }
 
 .steps-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: var(--spacing-md);
-    margin-top: var(--spacing-lg);
-}
-
-.step {
     display: flex;
-    gap: var(--spacing-sm);
-    background-color: var(--background-white);
-    padding: var(--spacing-md);
-    border-radius: var(--radius-lg);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+    flex-direction: column;
+    gap: 0;
+    margin-top: var(--spacing-lg);
+    position: relative;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.step:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+.step-wrapper {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-md);
+    position: relative;
+    margin-bottom: var(--spacing-md);
+}
+
+.step-timeline {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+    position: relative;
+    width: 60px;
+    padding-top: 0;
 }
 
 .step-number {
-    flex-shrink: 0;
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     background-color: var(--primary-green);
     color: var(--background-white);
     border-radius: 50%;
@@ -624,16 +630,56 @@ a:hover {
     justify-content: center;
     font-size: var(--font-size-xl);
     font-weight: 700;
+    z-index: 2;
+    position: relative;
+    box-shadow: 0 4px 12px rgba(45, 80, 22, 0.2);
+    flex-shrink: 0;
+    margin-top: 0;
 }
 
-.step-content h3 {
-    color: var(--primary-green);
+.step-line {
+    width: 3px;
+    background: linear-gradient(180deg, var(--secondary-green) 0%, var(--accent-green) 100%);
+    flex: 1;
+    min-height: 60px;
+    margin-top: var(--spacing-xs);
+    position: relative;
+    z-index: 1;
+}
+
+.step-card {
+    margin-top: 0;
+}
+
+.step-line-last {
+    display: none;
+}
+
+.step-card {
+    flex: 1;
+    background-color: var(--background-white);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.step-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+.step-card h3 {
+    color: var(--text-dark);
     margin-bottom: var(--spacing-xs);
+    font-size: var(--font-size-xl);
+    font-weight: 700;
 }
 
-.step-content p {
+.step-card p {
     color: var(--text-medium);
     margin-bottom: 0;
+    line-height: 1.6;
 }
 
 /* ========================================
@@ -1206,19 +1252,39 @@ a:hover {
         padding: 0 var(--spacing-sm);
     }
     
-    .features-grid,
-    .steps-container {
+    .features-grid {
         grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     }
     
-    .step {
-        padding: var(--spacing-sm);
+    .steps-container {
+        gap: 0;
+    }
+    
+    .step-wrapper {
+        gap: var(--spacing-sm);
+        margin-bottom: var(--spacing-md);
     }
     
     .step-number {
-        width: 45px;
-        height: 45px;
+        width: 50px;
+        height: 50px;
         font-size: 20px;
+    }
+    
+    .step-line {
+        min-height: 50px;
+    }
+    
+    .step-card {
+        padding: var(--spacing-sm);
+    }
+    
+    .step-card h3 {
+        font-size: 18px;
+    }
+    
+    .step-card p {
+        font-size: 14px;
     }
     
     .benefits {
@@ -1475,7 +1541,35 @@ a:hover {
     }
     
     .steps-container {
-        grid-template-columns: 1fr;
+        gap: 0;
+    }
+    
+    .step-wrapper {
+        gap: var(--spacing-sm);
+        margin-bottom: var(--spacing-md);
+    }
+    
+    .step-number {
+        width: 45px;
+        height: 45px;
+        font-size: 18px;
+    }
+    
+    .step-line {
+        min-height: 40px;
+    }
+    
+    .step-card {
+        padding: var(--spacing-sm);
+    }
+    
+    .step-card h3 {
+        font-size: 18px;
+    }
+    
+    .step-card p {
+        font-size: var(--font-size-small);
+        line-height: 1.5;
     }
     
     .benefits-content {
@@ -1505,20 +1599,6 @@ a:hover {
         width: 60px;
         height: 60px;
         font-size: 28px;
-    }
-    
-    .step {
-        flex-direction: row;
-        text-align: left;
-        align-items: flex-start;
-    }
-    
-    .step-number {
-        flex-shrink: 0;
-    }
-    
-    .step-content {
-        flex: 1;
     }
     
     .cta-section {
@@ -1635,27 +1715,36 @@ a:hover {
     }
     
     .steps-container {
-        gap: var(--spacing-sm);
+        gap: 0;
         margin-top: var(--spacing-md);
     }
     
-    .step {
-        padding: var(--spacing-sm);
+    .step-wrapper {
         gap: var(--spacing-xs);
+        margin-bottom: var(--spacing-sm);
     }
     
     .step-number {
         width: 40px;
         height: 40px;
-        font-size: 18px;
+        font-size: 16px;
     }
     
-    .step-content h3 {
-        font-size: 18px;
+    .step-line {
+        min-height: 30px;
     }
     
-    .step-content p {
-        font-size: var(--font-size-small);
+    .step-card {
+        padding: var(--spacing-sm);
+    }
+    
+    .step-card h3 {
+        font-size: 16px;
+    }
+    
+    .step-card p {
+        font-size: 13px;
+        line-height: 1.4;
     }
     
     .benefits {
@@ -1796,22 +1885,60 @@ a:hover {
         padding: 0;
     }
     
-    .step {
-        padding: var(--spacing-xs);
+    .step-wrapper {
+        gap: var(--spacing-xs);
+        margin-bottom: var(--spacing-xs);
     }
     
     .step-number {
         width: 35px;
         height: 35px;
-        font-size: 16px;
+        font-size: 14px;
     }
     
-    .step-content h3 {
-        font-size: 16px;
+    .step-line {
+        min-height: 25px;
     }
     
-    .step-content p {
-        font-size: 13px;
+    .step-card {
+        padding: var(--spacing-xs);
+    }
+    
+    .step-card h3 {
+        font-size: 14px;
+    }
+    
+    .step-card p {
+        font-size: 12px;
+        line-height: 1.4;
+    }
+    
+    .step-wrapper {
+        gap: var(--spacing-xs);
+        margin-bottom: var(--spacing-xs);
+    }
+    
+    .step-number {
+        width: 35px;
+        height: 35px;
+        font-size: 14px;
+    }
+    
+    .step-line {
+        min-height: 25px;
+    }
+    
+    .step-card {
+        padding: var(--spacing-xs);
+    }
+    
+    .step-card h3 {
+        font-size: 14px;
+    }
+    
+    .step-card p {
+        font-size: 12px;
+        line-height: 1.4;
     }
     
     .benefits {
@@ -1906,3 +2033,4 @@ a:hover {
         font-size: 14px;
     }
 }
+
