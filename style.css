@@ -1492,6 +1492,21 @@ a:hover {
         grid-template-columns: 1fr;
     }
     
+    .benefit-item h3 {
+        font-size: 18px;
+    }
+    
+    .benefit-item p {
+        font-size: 14px;
+        line-height: 1.5;
+    }
+    
+    .benefit-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 28px;
+    }
+    
     .step {
         flex-direction: row;
         text-align: left;
@@ -1819,6 +1834,21 @@ a:hover {
     
     .benefit-item {
         padding: var(--spacing-sm);
+    }
+    
+    .benefit-item h3 {
+        font-size: 16px;
+    }
+    
+    .benefit-item p {
+        font-size: 13px;
+        line-height: 1.4;
+    }
+    
+    .benefit-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 24px;
     }
     
     .quote-section {
